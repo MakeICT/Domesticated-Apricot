@@ -6,7 +6,7 @@ import (
 	"github.com/justinas/alice"
 	"github.com/makeict/MESSforMakers/controllers"
 
-	"github.com/aaronarduino/MESSforMakers/session"
+	"github.com/makeict/MESSforMakers/session"
 	"github.com/gorilla/mux"
 )
 
