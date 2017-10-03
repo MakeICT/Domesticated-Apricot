@@ -19,28 +19,19 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
-	"github.com/justinas/alice"
-	"github.com/makeict/Domesticated-Apricot/controllers"
 	"log"
 	"net/http"
 	"time"
 )
 
-type App struct {
-	*mux.Router
-}
+const appPort = "8080"
 
 func main() {
-	app := &App{mux.NewRouter()}
-	commonHandlers := alice.New(loggingHandler)
-	userC := controllers.User
-	app.Handle("/", commonHandlers.ThenFunc(RootHandler))
-	app.Handle("/user", commonHandlers.ThenFunc(userC.Index))
-	log.Fatal(http.ListenAndServe(":8080", app))
+	app := newApplication()
+	log.Fatal(http.ListenAndServe(":"+appPort, app.appRouter()))
 }
 
-//middleware
+// middleware TODO: move to a middleware file.
 func loggingHandler(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		t1 := time.Now()
@@ -50,7 +41,7 @@ func loggingHandler(h http.Handler) http.Handler {
 	})
 }
 
-//obsolete, will all be handled in controllers
+// RootHandler is obsolete, will all be handled in controllers.
 func RootHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "you got the root handler")
 }
