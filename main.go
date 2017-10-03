@@ -20,6 +20,7 @@ package main
 import (
 	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/henriqueholanda/MESSforMakers/middlewares"
 	"github.com/justinas/alice"
 	"github.com/makeict/MESSforMakers/controllers"
 	"log"
@@ -34,9 +35,10 @@ type App struct {
 func main() {
 	app := &App{mux.NewRouter()}
 	commonHandlers := alice.New(loggingHandler)
+	specialHandlers := alice.New(loggingHandler, middlewares.Authentication)
 	userC := controllers.User
 	app.Handle("/", commonHandlers.ThenFunc(RootHandler))
-	app.Handle("/user", commonHandlers.ThenFunc(userC.Index))
+	app.Handle("/user", specialHandlers.ThenFunc(userC.Index))
 	log.Fatal(http.ListenAndServe(":8080", app))
 }
 
