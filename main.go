@@ -1,5 +1,5 @@
 /*
- Domesticated Apricot - An open source member and event management platform
+ MESS for Makers - An open source member and event management platform
     Copyright (C) 2017  Sam Schurter
 
     This program is free software: you can redistribute it and/or modify
@@ -19,25 +19,45 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
+	"net/http/httputil"
 	"time"
+
+	"github.com/makeict/MESSforMakers/util"
 )
 
 const appPort = "8080"
 
 func main() {
 	app := newApplication()
-	log.Fatal(http.ListenAndServe(":"+appPort, app.appRouter()))
+
+	defer app.logger.Close()
+	app.logger.Println("Starting Application")
+	app.logger.Fatal(http.ListenAndServe(":"+appPort, app.appRouter()))
+
 }
 
-// middleware TODO: move to a middleware file.
-func loggingHandler(h http.Handler) http.Handler {
+//Middleware
+type loggingMiddleware struct {
+	dumpRequest bool
+	logger      *util.Logger
+}
+
+func (l *loggingMiddleware) loggingHandler(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		t1 := time.Now()
+
+		if l.dumpRequest {
+			if reqDump, err := httputil.DumpRequest(r, true); err == nil {
+				l.logger.Printf("Recieved Request:\n%s\n", reqDump)
+			}
+		}
+
 		h.ServeHTTP(w, r)
+
 		t2 := time.Now()
-		fmt.Printf("[%s] %q %v\n", r.Method, r.URL.String(), t2.Sub(t1))
+
+		l.logger.Printf("[%s] %s %v\n", r.Method, r.URL.String(), t2.Sub(t1))
 	})
 }
 
