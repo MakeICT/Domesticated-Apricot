@@ -16,7 +16,7 @@ import (
 type application struct {
 	cookieStore    *session.CookieStore
 	commonHandlers alice.Chain
-	logger         Logger
+	logger         *util.Logger
 }
 
 func newApplication() *application {
