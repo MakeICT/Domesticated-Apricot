@@ -7,7 +7,7 @@ The first steps are to get something minimal that can begin to take the place of
 We also hope to make this project about a lot more than just MakeICT.  We feel that every makerspace could use a good management tool for free. We'd like to keep in mind a design philosophy that makes it easy for other organizations to deploy, customize, and extend this platform.
 
 # Resources 
-You can join the discussion on Slack, or come to a scheduled meeting.  Check out [devICT's home page](devict.org) for information on joining Slack and for joining the Meetup for event notifications.
+You can join the discussion on Slack, or come to a scheduled meeting.  Check out [devICT's home page](http://devict.org) for information on joining Slack and for joining the Meetup for event notifications.
 
 Our current design mockups are on [NinjaMock](https://ninjamock.com/s/JC7Q9).  Check them out to see the direction we are taking, especially if you would like to help with the front-end development.
 
