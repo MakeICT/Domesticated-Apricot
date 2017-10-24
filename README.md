@@ -22,7 +22,7 @@ Next, check the projects or issues for something that interests you, or that you
 When you find something, see if there is a branch for that feature or bug, if not make a new one.  
 
 ### What technology does this prjoect use?
-We are currently building the server backend in Go (1.7.3), the frontend with Material.io, and using PostgreSQL (9.3) for storage.  Various other libraries may be used, but those will be explained in the comments in the files that use them.
+We are currently building the server backend in Go (1.7.3), the frontend with [Material.io](https://material.io), and using PostgreSQL (9.3) for storage.  Various other libraries may be used, but those will be explained in the comments in the files that use them.
 
 ### How should I add or work on a feature?
 Check the projects or issues to find something you want to work on.  Then, check the branches to see if someone is already working on it.  If they are, you can join that branch, or if not, you will need to create a new branch. More information on the git Feature Branch workflow can be found in [this tutorial](https://www.atlassian.com/git/tutorials/comparing-workflows#feature-branch-workflow) by Atlassian.  It also has a very good beginners guide to using Git if you never have before.
