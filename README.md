@@ -33,7 +33,7 @@ At this time, with very little written in the way of code or tests, the plan is 
 
 # Setting up with Cloud9
 Cloud9 has PostgreSQL, Git, and Go already set up and is a workable Go IDE, so it's easy for someone new to Go or software development to use for getting started. This guide does assume you are familiar with git, and creating and navigating directories on Linux.
-1. Go to [Cloud9](c9.io)
+1. Go to [Cloud9](https://c9.io)
 2. Login with your github account
 3. Create new blank workspace
 4. Create 3 new folders, `bin`, `pkg`, and `src` for your compiled binaries, compiled libraries, and source code respectively.  These are the folders that Go expects by default.
